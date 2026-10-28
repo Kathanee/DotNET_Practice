@@ -1,0 +1,45 @@
+@baseUrl = http://localhost:5080
+@apiKey = dev-only-training-key
+
+### No key: should return 401 Unauthorized
+GET {{baseUrl}}/api/employees
+
+### List employees
+GET {{baseUrl}}/api/employees
+X-Api-Key: {{apiKey}}
+
+### Filter employees with LINQ-backed query parameters
+GET {{baseUrl}}/api/employees?department=Engineering&search=Meera
+X-Api-Key: {{apiKey}}
+
+### Get one employee
+GET {{baseUrl}}/api/employees/1
+X-Api-Key: {{apiKey}}
+
+### Create employee
+POST {{baseUrl}}/api/employees
+Content-Type: application/json
+X-Api-Key: {{apiKey}}
+
+{
+  "fullName": "Dev Patel",
+  "email": "dev@example.com",
+  "department": "Engineering",
+  "salary": 80000
+}
+
+### Update employee
+PUT {{baseUrl}}/api/employees/1
+Content-Type: application/json
+X-Api-Key: {{apiKey}}
+
+{
+  "fullName": "Asha Rao",
+  "email": "asha@example.com",
+  "department": "People",
+  "salary": 88000
+}
+
+### Delete employee
+DELETE {{baseUrl}}/api/employees/3
+X-Api-Key: {{apiKey}}
